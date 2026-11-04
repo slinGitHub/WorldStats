@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{% assign latest = site.posts | first %}
+{% if latest %}
+<section class="featured">
+  <p class="badge">Neueste Karte</p>
+  <h1><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h1>
+  <p class="meta"><time datetime="{{ latest.date | date_to_xmlschema }}">{{ latest.date | date: "%d.%m.%Y" }}</time></p>
+  {% if latest.description %}<p class="lead">{{ latest.description }}</p>{% endif %}
+  <div class="card map-frame">
+    <iframe src="{{ '/maps/' | append: latest.map | append: '.html' | relative_url }}" loading="lazy" title="{{ latest.title }}"></iframe>
+  </div>
+  <p class="fullscreen"><a href="{{ latest.url | relative_url }}">Zur Detailseite &rarr;</a></p>
+</section>
+
+{% if site.posts.size > 1 %}
+<h2 class="section-title">Weitere Karten</h2>
+<div class="grid">
+  {% for post in site.posts offset: 1 %}
+  <a class="card tile" href="{{ post.url | relative_url }}">
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d.%m.%Y" }}</time>
+    <h3>{{ post.title }}</h3>
+    {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+    <span class="more">Karte ansehen &rarr;</span>
+  </a>
+  {% endfor %}
+</div>
+{% endif %}
+{% else %}
+<p>Noch keine Karten veröffentlicht.</p>
+{% endif %}

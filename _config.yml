@@ -1,0 +1,14 @@
+title: Weltkarten
+description: Interaktive Karten zu Daten aus aller Welt
+lang: de
+
+# Nur bei Projekt-Seiten (https://<user>.github.io/<repo>/) auf "/<repo>" setzen.
+# Bei einem Repo namens <user>.github.io leer lassen.
+baseurl: ""
+
+# Diese Dateien gehören nicht auf die veröffentlichte Seite
+exclude:
+  - README.md
+  - "*.py"
+  - daten
+  - requirements.txt
